@@ -25,4 +25,12 @@ return array (
     'name' => 'test',
     'id' => 3,
   ),
+  3 => 
+  array (
+    'email' => 'shqiponje.dani@student.uni-pr.edu',
+    'password' => '1533dd1a7d6766b9e9e01c909c9fd6e4',
+    'user_type' => 'user',
+    'name' => 'shqiponje',
+    'id' => 4,
+  ),
 );

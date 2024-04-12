@@ -11,7 +11,7 @@ return array (
     'total_products' => 'Product 1 (1) , Product 2 (1) ',
     'total_price' => 49.98,
     'placed_on' => '07-Apr-2024',
-    'payment_status' => 'pending',
+    'payment_status' => 'completed',
   ),
   1 => 
   array (
@@ -24,22 +24,9 @@ return array (
     'total_products' => 'Product 1 (10) ',
     'total_price' => 199.89999999999998,
     'placed_on' => '07-Apr-2024',
-    'payment_status' => 'completed',
-  ),
-  2 => 
-  array (
-    'user_id' => 2,
-    'name' => 'yllka',
-    'number' => '3232',
-    'email' => 'yllka.programming@gmail.com',
-    'method' => 'cash on delivery',
-    'address' => 'flat no. 12, 12, Prishtine, sdkjfsdk - 4645',
-    'total_products' => 'Product 1 (1) , Product 2 (11) ',
-    'total_price' => 349.88,
-    'placed_on' => '07-Apr-2024',
     'payment_status' => 'pending',
   ),
-  3 => 
+  2 => 
   array (
     'user_id' => 3,
     'name' => 'yllka',

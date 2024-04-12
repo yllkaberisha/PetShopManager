@@ -39,4 +39,17 @@ return array (
     'placed_on' => '07-Apr-2024',
     'payment_status' => 'pending',
   ),
+  3 => 
+  array (
+    'user_id' => 3,
+    'name' => 'yllka',
+    'number' => '12',
+    'email' => 'test@example.com',
+    'method' => 'cash on delivery',
+    'address' => 'flat no. 1, 1, Prishtine, sdkjfsdk - 23123',
+    'total_products' => 'Product 1 (1) ',
+    'total_price' => 19.99,
+    'placed_on' => '12-Apr-2024',
+    'payment_status' => 'pending',
+  ),
 );

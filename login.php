@@ -7,16 +7,24 @@ function setSessionData($user)
 {
    $_SESSION['user_name'] = $user['name'];
    $_SESSION['user_email'] = $user['email'];
-   $_SESSION['user_id'] = $user['id'];
+   $_SESSION['user_type'] = $user['user_type'];
+
+   if ($user['user_type'] === 'admin') {
+      $_SESSION['admin_id'] = $user['id'];
+  } else {
+      $_SESSION['user_id'] = $user['id'];
+  }
+
 }
 
 if (isset($_POST['submit'])) {
    $email = $_POST['email'];
-   $pass = md5($_POST['password']); // Secure the password with md5 (Consider using stronger hashing like bcrypt)
+   $pass = md5($_POST['password']); 
    $authenticated = false;
 
    // Check user credentials
    foreach ($users as $user) {
+   
       if ($user['email'] === $email && $user['password'] === $pass) {
          $authenticated = true;
          break; // Stop loop once user is found and authenticated

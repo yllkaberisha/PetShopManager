@@ -5,7 +5,7 @@
    --red:#0c0c0c;
    --orange:#1e05454a;
    --black:#2c3e50;
-   --white:#dbe7e7;
+   --white:#f2f8f8fd;
    --light-color:#888;
    --light-white:#eee;
    --light-bg:#fafafa;
@@ -140,7 +140,7 @@ section{
    align-items: center;
    justify-content: center;
    gap:1rem;
-   background: url(../images/heading-bg.webp) no-repeat;
+   background: url(../images/heading-bg.jpg) no-repeat;
    background-size: cover;
    background-position: center;
    text-align: center;

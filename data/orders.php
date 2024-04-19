@@ -130,4 +130,17 @@ return array (
     'placed_on' => '19-Apr-2024',
     'payment_status' => 'pending',
   ),
+  10 => 
+  array (
+    'user_id' => 6,
+    'name' => 'Rinesa Gajtani',
+    'number' => '111111111111',
+    'email' => 'rinesagajtani28@gmail.com',
+    'method' => 'cash on delivery',
+    'address' => 'flat no. 1111111, Hajvali rruga Oda, Prishtina, Kosovo - 1111111111',
+    'total_products' => 'Product 1 (1) ',
+    'total_price' => 20,
+    'placed_on' => '19-Apr-2024',
+    'payment_status' => 'pending',
+  ),
 );

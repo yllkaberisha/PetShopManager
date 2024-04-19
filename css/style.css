@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
 
 :root{
-   --purple:#b8a6c6;
+   --purple:#7e6a8e;
    --red:#0c0c0c;
    --orange:#1e05454a;
    --black:#2c3e50;
@@ -14,17 +14,17 @@
 }
 
 *{
-   font-family:'Times New Roman', Times, serif;
-   margin: 5px; padding: 5px;
-   box-sizing:initial;
+   font-family: 'Rubik', sans-serif;
+   margin:0; padding:0;
+   box-sizing: border-box;
    outline: none; border:none;
-   text-decoration:none;
+   text-decoration: none;
    transition:all .2s linear;
 }
 
 *::selection{
-   background-color:#101010;
-   color:#dbe7e7;
+   background-color: var(--purple);
+   color:var(--white);
 }
 
 *::-webkit-scrollbar{
@@ -37,7 +37,7 @@
 }
 
 *::-webkit-scrollbar-thumb{
-   background-color:rgb(207, 156, 156);
+   background-color: var(--purple);
 }
 
 html{
@@ -46,15 +46,15 @@ html{
 }
 
 section{
-   padding:3rem 2 rem;
+   padding:3rem 2rem;
 }
 
 .empty{
    padding:1.5rem;
    text-align: center;
    border:none;
-   background-color:rgb(19, 12, 7);
-   color:#7e6a8e;
+   background-color: var(--white);
+   color:var(--red);
    font-size: 2rem;
 }
 
@@ -63,7 +63,7 @@ section{
    top:0;
    margin:0 auto;
    max-width: 1200px;
-   background-color:rgb(68, 130, 109);
+   background-color: var(--white);
    padding:2rem;
    display: flex;
    align-items: center;
@@ -74,12 +74,12 @@ section{
 
 .message span{
    font-size: 2rem;
-   color:#888;
+   color:var(--black);
 }
 
 .message i{
    cursor: pointer;
-   color:#888;
+   color:var(--red);
    font-size: 2.5rem;
 }
 
@@ -91,7 +91,7 @@ section{
    text-align: center;
    margin-bottom: 2rem;
    text-transform: uppercase;
-   color:bisque;
+   color:var(--black);
    font-size: 4rem;
 }
 
@@ -103,25 +103,25 @@ section{
    margin-top: 1rem;
    padding:1rem 3rem;
    cursor: pointer;
-   color:aqua;
+   color:var(--white);
    font-size: 1.8rem;
-   border-radius: .4rem;
+   border-radius: .5rem;
    text-transform: capitalize;
 }
 
 .btn:hover,
 .option-btn:hover,
 .delete-btn:hover{
-   background-color:antiquewhite;
+   background-color: var(--red);
 }
 
 .white-btn,
 .btn{
-   background-color:brown;
+   background-color: var(--orange);
 }
 
 .option-btn{
-   background-color:brown;
+   background-color: var(--orange);
 }
 
 .delete-btn{
@@ -608,22 +608,22 @@ section{
    font-size: 2.5rem;
    text-transform: uppercase;
    margin-bottom: 1rem;
-   color:red;
+   color:var(--black);
 }
 
 .contact form .box{
    margin:1rem 0;
    width: 100%;
-   border:none;
-   background-color: red;
+   border:var(--border);
+   background-color: var(--white);
    padding:1.2rem 1.4rem;
    font-size: 1.8rem;
-   color:blueviolet;
+   color:var(--black);
    border-radius: .5rem;
 }
 
 .contact form textarea{
-   height: 50px;
+   height: 20rem;
    resize: none;
 }
 
@@ -741,7 +741,7 @@ section{
 
 .display-order p{
    background-color: var(--light-bg);
-   color:var(--red);
+   color:var(--black);
    font-size: 2rem;
    padding:1rem 1.5rem;
    border:var(--border);
@@ -860,6 +860,15 @@ section{
    border-radius: .5rem;
 }
 
+
+
+
+
+
+
+
+ 
+
 .footer{
    background-color: var(--light-bg);
 }
@@ -889,12 +898,12 @@ section{
 
 .footer .box-container .box p i,
 .footer .box-container .box a i{
-   color:var(--red);
+   color:var(--purple);
    padding-right: .5rem;
 }
 
 .footer .box-container .box a:hover{
-   color:var(--red);
+   color:var(--purple);
    text-decoration: underline;
 }
 

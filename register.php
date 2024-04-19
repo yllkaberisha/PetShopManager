@@ -1,101 +1,145 @@
 <?php
+$users = include ('data/user_data.php');
 
-$users = include('data/user_data.php');
+if (isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $pass = md5($_POST['password']); // Consider using a stronger hash function in production
+    $cpass = md5($_POST['cpassword']);
+    $user_type = $_POST['user_type'];
 
-if(isset($_POST['submit'])){
+    $email_exists = false;
+    foreach ($users as $user) {
+        if ($user['email'] === $email) {
+            $email_exists = true;
+            break;
+        }
+    }
 
-   $name = $_POST['name'];
-   $email = $_POST['email'];
-   $pass = md5($_POST['password']); // Using md5 for consistency with your approach
-   $cpass = md5($_POST['cpassword']);
-   $user_type = $_POST['user_type'];
+    if ($email_exists) {
+        $message[] = 'User already exists!';
+    } else {
+        if ($pass != $cpass) {
+            $message[] = 'Confirm password not matched!';
+        } else {
+            $last_user = end($users);
+            $next_id = $last_user['id'] + 1;
 
-   // Simulating the check if user exists
-   $email_exists = false;
-   foreach ($users as $user) {
-      if ($user['email'] === $email) {
-         $email_exists = true;
-         break;
-      }
-   }
+            $users[] = array(
+                'id' => $next_id,
+                'name' => $name,
+                'email' => $email,
+                'password' => $pass,
+                'user_type' => $user_type
+            );
 
-   if($email_exists){
-      $message[] = 'user already exists!';
-   }else{
-      if($pass != $cpass){
-         $message[] = 'confirm password not matched!';
-      }else{
+            // Update the user data file
+            file_put_contents('data/user_data.php', "<?php\nreturn " . var_export($users, true) . ";");
 
-         $last_user = end($users);
-         $next_id = $last_user['id'] + 1;
-
-         $users[] = array(
-            'email' => $email,
-            'password' => $pass,
-            'user_type' => $user_type,
-            'name' => $name,
-            'id' => $next_id,
-        );
-       
-         file_put_contents('data/user_data.php', "<?php\n// Users data storage\nreturn " . var_export($users, true) . ";");
-         $message[] = 'registered successfully!';
-         header('location:login.php');
-         exit();
-      }
-   }
+            $message[] = 'Registered successfully!';
+            header('Location: login.php');
+            exit();
+        }
+    }
 }
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>register</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
 
-   <!-- font awesome cdn link  -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
 
 </head>
+
 <body>
 
 
 
-<?php
-if(isset($message)){
-   foreach($message as $message){
-      echo '
+    <?php
+    if (isset($message)) {
+        foreach ($message as $message) {
+            echo '
       <div class="message">
-         <span>'.$message.'</span>
+         <span>' . $message . '</span>
          <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
       </div>
       ';
-   }
-}
-?>
-   
-<div class="form-container">
+        }
+    }
+    ?>
 
-   <form action="" method="post">
-      <h3>register now</h3>
-      <input type="text" name="name" placeholder="enter your name" required class="box">
-      <input type="email" name="email" placeholder="enter your email" required class="box">
-      <input type="password" name="password" placeholder="enter your password" required class="box">
-      <input type="password" name="cpassword" placeholder="confirm your password" required class="box">
-      <select name="user_type" class="box">
-         <option value="user">user</option>
-         <option value="admin">admin</option>
-      </select>
-      <input type="submit" name="submit" value="register now" class="btn">
-      <p>already have an account? <a href="login.php">login now</a></p>
-   </form>
+    <div class="container">
+        <input type="checkbox" id="flip">
+        <div class="cover">
+            <div class="front">
+                <img src="images/login.jpg" alt="">
+                <div class="text">
+                    <span class="text-1">Every new friend is a <br> new adventure</span>
+                    <span class="text-2">Let's get connected</span>
+                </div>
+            </div>
+            <div class="back">
+                <!--<img class="backImg" src="images/backImg.jpg" alt="">-->
+                <div class="text">
+                    <span class="text-1">Complete miles of journey <br> with one step</span>
+                    <span class="text-2">Let's get started</span>
+                </div>
+            </div>
+        </div>
+        <div class="forms">
+            <div class="form-content">
 
-</div>
+                <div class="signup-form">
+                    <div class="title">Signup</div>
+                    <form action="" method="post">
+                        <div class="input-boxes">
+                            <div class="input-box">
+                                <i class="fas fa-user"></i>
+                                <input type="text" name="name" placeholder="Enter your name" required>
+                            </div>
+                            <div class="input-box">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" name="email" placeholder="Enter your email" required>
+                            </div>
+                            <div class="input-box">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" name="password" placeholder="Enter your password" required>
+                            </div>
+                            <div class="input-box">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" name="cpassword" placeholder="Confirm your password" required>
+                            </div>
+                            <div class="input-box">
+                                <h3 for="user_type">Choose role: </h3>
+                                <select name="user_type" class="box">
+                                    <option value="user">User</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                            </div>
+                            <div class="button input-box">
+                                <input type="submit" name="submit" value="register now">
+                            </div>
+                            <div class="text sign-up-text">Already have an account? <a href="login.php">Login now</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
+
 </html>

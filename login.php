@@ -1,52 +1,43 @@
 <?php
-
 session_start();
-$users = include('data/user_data.php');
+$users = include ('data/user_data.php'); // Load user data
 
+// Function to set session data
+function setSessionData($user)
+{
+   $_SESSION['user_name'] = $user['name'];
+   $_SESSION['user_email'] = $user['email'];
+   $_SESSION['user_id'] = $user['id'];
+}
 
-if(isset($_POST['submit'])){
-
+if (isset($_POST['submit'])) {
    $email = $_POST['email'];
-   $pass = md5($_POST['password']);
-   
+   $pass = md5($_POST['password']); // Secure the password with md5 (Consider using stronger hashing like bcrypt)
    $authenticated = false;
+
+   // Check user credentials
    foreach ($users as $user) {
       if ($user['email'] === $email && $user['password'] === $pass) {
          $authenticated = true;
-         $row = $user; 
+         break; // Stop loop once user is found and authenticated
       }
    }
 
-   if($authenticated){
-
-      if($row['user_type'] == 'admin'){
-
-         $_SESSION['admin_name'] = $row['name'];
-         $_SESSION['admin_email'] = $row['email'];
-         $_SESSION['admin_id'] = $row['id'];
-         header('location:admin_page.php');
-         exit();
-
-      }elseif($row['user_type'] == 'user'){
-
-         $_SESSION['user_name'] = $row['name'];
-         $_SESSION['user_email'] = $row['email'];
-         $_SESSION['user_id'] = $row['id'];
-         header('location:home.php');
-         exit();
-
-      }
-
-   }else{
-      $message[] = 'incorrect email or password!';
+   if ($authenticated) {
+      // Assign session variables based on user type and redirect
+      setSessionData($user);
+      $redirectPage = ($user['user_type'] === 'admin') ? 'admin_page.php' : 'home.php';
+      header("Location: $redirectPage");
+      exit();
+   } else {
+      $message = 'Incorrect email or password!';
    }
-
 }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -58,34 +49,65 @@ if(isset($_POST['submit'])){
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/login.css">
 
 </head>
+
 <body>
 
-<?php
-if(isset($message)){
-   foreach($message as $message){
-      echo '
-      <div class="message">
-         <span>'.$message.'</span>
-         <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
+   <div class="container">
+      <input type="checkbox" id="flip">
+      <div class="cover">
+         <div class="front">
+            <img src="images/login.jpg" alt="">
+            <div class="text">
+               <span class="text-1">Every new friend is a <br> new adventure</span>
+               <span class="text-2">Let's get connected</span>
+            </div>
+         </div>
+         <div class="back">
+            <!--<img class="backImg" src="images/backImg.jpg" alt="">-->
+            <div class="text">
+               <span class="text-1">Complete miles of journey <br> with one step</span>
+               <span class="text-2">Let's get started</span>
+            </div>
+         </div>
       </div>
-      ';
-   }
-}
-?>
-   
-<div class="form-container">
+      <div class="forms">
+         <div class="form-content">
+            <div class="login-form">
+               <div class="title">Login</div>
+               <form action="" method="post">
+                  <div class="input-boxes">
+                     <div class="input-box">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" name="email" placeholder="Enter your email" required>
+                     </div>
+                     <div class="input-box">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="password" placeholder="Enter your password" required>
+                     </div>
+                     <div class="button input-box">
+                        <input type="submit" name="submit" value="Login now">
+                     </div>
 
-   <form action="" method="post">
-      <h3>login now</h3>
-      <input type="email" name="email" placeholder="enter your email" required class="box">
-      <input type="password" name="password" placeholder="enter your password" required class="box">
-      <input type="submit" name="submit" value="login now" class="btn">
-      <p>don't have an account? <a href="register.php">register now</a></p>
-   </form>
+                     <?php
+                     if (isset($message)) {
+                        echo '
+                              <h3 style="color: red;">' . $message . '</h3>
+                              ';
+                     }
+                     ?>
 
-</div>
+                     <div class="text sign-up-text">Don't have an account? <a href="register.php">Register now</a></div>
+                  </div>
+               </form>
+            </div>
+
+         </div>
+      </div>
+   </div>
 
 </body>
+
 </html>

@@ -24,4 +24,12 @@ return array (
     'name' => 'shqiponje',
     'id' => 4,
   ),
+  3 => 
+  array (
+    'id' => 5,
+    'name' => 'Yllkë',
+    'email' => 'yllka.programming@gmail.com',
+    'password' => '5b0267ced585bc6fc4567b59a15b9e26',
+    'user_type' => 'admin',
+  ),
 );

@@ -88,6 +88,31 @@ if (isset($_POST['update_product'])) {
    exit();
 }
 
+// e shtuar per prove
+
+// Funksioni për të sortuar produktet sipas emrit, çmimit ose ID-së
+function sortProducts($products, $sort_by) {
+    switch ($sort_by) {
+        case 'name':
+            usort($products, function($a, $b) {
+                return strcmp($a['name'], $b['name']);
+            });
+            break;
+        case 'price':
+            usort($products, function($a, $b) {
+                return $a['price'] - $b['price'];
+            });
+            break;
+        case 'id':
+        default:
+            usort($products, function($a, $b) {
+                return $a['id'] - $b['id'];
+            });
+            break;
+    }
+    return $products;
+}
+// uu
 ?>
 
 <!DOCTYPE html>

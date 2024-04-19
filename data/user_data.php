@@ -32,4 +32,12 @@ return array (
     'password' => '5b0267ced585bc6fc4567b59a15b9e26',
     'user_type' => 'admin',
   ),
+  4 => 
+  array (
+    'id' => 6,
+    'name' => 'Rinesa Gajtani',
+    'email' => 'rinesagajtani28@gmail.com',
+    'password' => 'e10adc3949ba59abbe56e057f20f883e',
+    'user_type' => 'user',
+  ),
 );

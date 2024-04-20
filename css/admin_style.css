@@ -249,7 +249,7 @@ section{
    gap:1.5rem;
    max-width: 1200px;
    margin:0 auto;
-   align-items: flex-start;
+   align-items: stretch;
 }
 
 .dashboard .box-container .box{
@@ -312,7 +312,7 @@ section{
    gap:1.5rem;
    max-width: 1200px;
    margin:0 auto;
-   align-items: flex-start;
+   align-items: stretch;
 }
 
 .show-products{
@@ -329,6 +329,7 @@ section{
 }
 
 .show-products .box-container .box img{
+   width: 90%;
    height: 30rem;
 }
 
@@ -389,7 +390,7 @@ section{
    gap:1.5rem;
    max-width: 1200px;
    margin:0 auto;
-   align-items: flex-start;
+   align-items: stretch;
 }
 
 .orders .box-container .box{
@@ -427,12 +428,12 @@ section{
 
 .users .box-container{
    display: grid;
-   grid-template-columns: repeat(auto-fit, 30rem);
+   grid-template-columns: repeat(auto-fit, 33rem);
    justify-content: center;
    gap:1.5rem;
    max-width: 1200px;
    margin:0 auto;
-   align-items: flex-start;
+   align-items: stretch;
 }
 
 .users .box-container .box{
@@ -465,7 +466,7 @@ section{
    gap:1.5rem;
    max-width: 1200px;
    margin:0 auto;
-   align-items: flex-start;
+   align-items: stretch;
 }
 
 .messages .box-container .box{

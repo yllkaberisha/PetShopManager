@@ -56,7 +56,7 @@ $orders = include('data/orders.php'); // Load orders from the file
          <p> address : <span><?php echo $order['address']; ?></span> </p>
          <p> payment method : <span><?php echo $order['method']; ?></span> </p>
          <p> your orders : <span><?php echo $order['total_products']; ?></span> </p>
-         <p> total price : <span>$<?php echo $order['total_price']; ?>/-</span> </p>
+         <p> total price : <span>$<?php echo $order['total_price']; ?></span> </p>
          <p> payment status : <span style="color:<?php echo $order['payment_status'] == 'pending' ? 'red' : 'green'; ?>;"><?php echo $order['payment_status']; ?></span> </p>
       </div>
       <?php

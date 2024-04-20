@@ -115,7 +115,7 @@ $valid = true;
                     if ($product['id'] == $cart_item['id']) {
                         $total_price = ($product['price'] * $cart_item['quantity']);
                         $grand_total += $total_price;
-                        echo "<p> {$product['name']} <span>($" . $product['price'] . "/- x " . $cart_item['quantity'] . ")</span> </p>";
+                        echo "<p> {$product['name']} <span>($" . $product['price'] . " x " . $cart_item['quantity'] . ")</span> </p>";
                         break; // Found the product, no need to continue the loop
                     }
                 }
@@ -124,7 +124,7 @@ $valid = true;
             echo '<p class="empty">Your cart is empty</p>';
         }
         ?>
-        <div class="grand-total">Grand total: <span>$<?php echo $grand_total; ?>/-</span></div>
+        <div class="grand-total">Grand total: <span>$<?php echo $grand_total; ?></span></div>
     </section>
 
     <section class="checkout">

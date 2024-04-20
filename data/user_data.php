@@ -32,4 +32,28 @@ return array (
     'password' => '5b0267ced585bc6fc4567b59a15b9e26',
     'user_type' => 'admin',
   ),
+  4 => 
+  array (
+    'id' => 6,
+    'name' => 'Rinesa Gajtani',
+    'email' => 'rinesagajtani28@gmail.com',
+    'password' => 'e10adc3949ba59abbe56e057f20f883e',
+    'user_type' => 'user',
+  ),
+  5 => 
+  array (
+    'id' => 7,
+    'name' => 'Arbnora',
+    'email' => 'arbnora.dragaj@student.uni-pr.edu',
+    'password' => '0192023a7bbd73250516f069df18b500',
+    'user_type' => 'admin',
+  ),
+  6 => 
+  array (
+    'id' => 8,
+    'name' => 'User',
+    'email' => 'user@example.com',
+    'password' => '6ad14ba9986e3615423dfca256d04e3f',
+    'user_type' => 'user',
+  ),
 );

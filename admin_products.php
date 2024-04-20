@@ -88,6 +88,31 @@ if (isset($_POST['update_product'])) {
    exit();
 }
 
+// e shtuar per prove
+
+// Funksioni për të sortuar produktet sipas emrit, çmimit ose ID-së
+function sortProducts($products, $sort_by) {
+    switch ($sort_by) {
+        case 'name':
+            usort($products, function($a, $b) {
+                return strcmp($a['name'], $b['name']);
+            });
+            break;
+        case 'price':
+            usort($products, function($a, $b) {
+                return $a['price'] - $b['price'];
+            });
+            break;
+        case 'id':
+        default:
+            usort($products, function($a, $b) {
+                return $a['id'] - $b['id'];
+            });
+            break;
+    }
+    return $products;
+}
+// uu
 ?>
 
 <!DOCTYPE html>
@@ -125,17 +150,63 @@ if (isset($_POST['update_product'])) {
 
 </section>
 
+<!--e shtuar per prove-->
+
+<!-- product sort dropdown -->
+<section class="sort-products">
+    <label for="sort_by">Sort by:</label>
+    <select name="sort_by" id="sort_by" onchange="location = this.value;">
+        <option value="admin_products.php">Default</option>
+        <option value="admin_products.php?sort=name">Name</option>
+        <option value="admin_products.php?sort=price">Price</option>
+        <option value="admin_products.php?sort=id">ID</option>
+    </select>
+</section>
+<!--uu-->
+
 <!-- product CRUD section ends -->
+<!--e shtuar per prove-->
+<section class="add-products">
+    <h1 class="title">shop products</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        <h3>add product</h3>
+        <input type="text" name="name" class="box" placeholder="enter product name" required>
+        <input type="number" min="0" name="price" class="box" placeholder="enter product price" required>
+        <input type="file" name="image" accept="image/jpg, image/jpeg, image/png" class="box" required>
+        <input type="submit" value="add product" name="add_product" class="btn">
+    </form>
+</section>
+
+<!-- product sort dropdown -->
+<section class="sort-products">
+    <label for="sort_by">Sort by:</label>
+    <select name="sort_by" id="sort_by" onchange="location = this.value;">
+        <option value="admin_products.php">Default</option>
+        <option value="admin_products.php?sort=name">Name</option>
+        <option value="admin_products.php?sort=price">Price</option>
+        <option value="admin_products.php?sort=id">ID</option>
+    </select>
+</section>
+<!-- uu-->
 
 <!-- show products  -->
 
 <section class="show-products">
     <div class="box-container">
-        <?php foreach ($products as $product): ?>
+        
+
+
+        <?php 
+        //e shtuar per prove
+           // Përditëson kodin për të marrë parametrin e sortimit
+            $sort_by = isset($_GET['sort']) ? $_GET['sort'] : 'id';
+            $products = sortProducts($products, $sort_by);
+            // uu
+        foreach ($products as $product): ?>
         <div class="box">
             <img src="uploaded_img/<?php echo $product['image']; ?>" alt="">
             <div class="name"><?php echo $product['name']; ?></div>
-            <div class="price">$<?php echo $product['price']; ?>/-</div>
+            <div class="price">$<?php echo $product['price']; ?></div>
             <a href="admin_products.php?update=<?php echo $product['id']; ?>" class="option-btn">update</a>
             <a href="admin_products.php?delete=<?php echo $product['id']; ?>" class="delete-btn" onclick="return confirm('Delete this product?');">Delete</a>
         </div>

@@ -4,8 +4,12 @@
    --purple:#7e6a8e;
    --red:#0c0c0c;
    --orange:#1e05454a;
+   --orange:#1e054582;
+
+   /* --orange:#7c2ae899; */
+
    --black:#2c3e50;
-   --white:#dbe7e7;
+   --white:#f2f8f8fd;
    --light-color:#888;
    --light-white:#eee;
    --light-bg:#fafafa;
@@ -140,7 +144,7 @@ section{
    align-items: center;
    justify-content: center;
    gap:1rem;
-   background: url(../images/heading-bg.webp) no-repeat;
+   background: url(../images/heading-bg.jpg) no-repeat;
    background-size: cover;
    background-position: center;
    text-align: center;
@@ -285,6 +289,10 @@ section{
    color:var(--purple);
 }
 
+.logo-img{
+   height: 3.5rem;
+}
+
 .header .header-2 .flex .navbar a{
    margin:0 1rem;
    font-size: 2rem;
@@ -329,10 +337,11 @@ section{
    display: inline-block;
 }
 
-.header .header-2 .flex .user-box p{
+.header .header-2 .flex .user-box p {
    font-size: 2rem;
    color:var(--light-color);
    margin-bottom: 1.5rem;
+   margin-top: .5rem;
 }
 
 .header .header-2 .flex .user-box p span{
@@ -341,6 +350,15 @@ section{
 
 .header .header-2 .flex .user-box .delete-btn{
    margin-top: 0;
+}
+
+.header .header-2 .flex .user-box .settings-font{
+   font-size: 1.3rem;
+   color:var(--purple);
+}
+.header .header-2 .flex .user-box .settings-font:hover{
+   font-size: 1.3rem;
+   color:var(--black);
 }
 
 .home{
@@ -376,7 +394,7 @@ section{
    margin:0 auto;
    display: grid;
    grid-template-columns: repeat(auto-fit, 30rem);
-   align-items: flex-start;
+   align-items: stretch;
    gap:1.5rem;
    justify-content: center;
 }
@@ -392,6 +410,7 @@ section{
 }
 
 .products .box-container .box .image{
+   width: 90%;
    height: 30rem;
 }
 
@@ -772,13 +791,23 @@ section{
    border-radius: .5rem;
 }
 
-.checkout form h3{
+.checkout form h3 {
    text-align: center;
    margin-bottom: 2rem;
    color:var(--black);
    text-transform: uppercase;
    font-size: 3rem;
 }
+
+.checkout form p{
+   font-size: 2rem;
+   margin-bottom: 3rem;
+}
+.checkout form p span{
+   color:var(--purple);
+  
+}
+
 
 .checkout form .flex{
    display: flex;

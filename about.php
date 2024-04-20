@@ -122,8 +122,8 @@ if(!isset($user_id)){
 
       <div class="content">
          <h3>why choose us?</h3>
-         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet voluptatibus aut hic molestias, reiciendis natus fuga, cumque excepturi veniam ratione iure. Excepturi fugiat placeat iusto facere id officia assumenda temporibus?</p>
-         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit quos enim minima ipsa dicta officia corporis ratione saepe sed adipisci?</p>
+         <p>Lorem ipsum dolor sit amet reiciendis natus fuga, cumque excepturi veniam ratione iure. Excepturi fugiat  officia  temporibus?</p>
+         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit officia corporis ratione saepe sed adipisci?</p>
          <a href="contact.php" class="btn">contact us</a>
       </div>
 
@@ -149,7 +149,7 @@ if(!isset($user_id)){
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
          </div>
-         <h3>john deo</h3>
+         <h3>Yllka Berisha</h3>
       </div>
 
       <div class="box">
@@ -162,7 +162,7 @@ if(!isset($user_id)){
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
          </div>
-         <h3>john deo</h3>
+         <h3>Noar Kuleta</h3>
       </div>
 
       <div class="box">
@@ -175,7 +175,7 @@ if(!isset($user_id)){
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
          </div>
-         <h3>john deo</h3>
+         <h3>Lura Ibishi</h3>
       </div>
 
    </div>

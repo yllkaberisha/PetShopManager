@@ -42,6 +42,44 @@ if(isset($_POST['add_to_cart'])){
 }
 $products = include('data/products.php');
 
+
+
+
+// Renditja e produkteve sipas zgjedhjes së përdoruesit
+$sortOrder = isset($_POST['sort_order']) ? $_POST['sort_order'] : 'az';
+
+switch ($sortOrder) {
+    case 'az':
+        usort($products, function($a, $b) {
+            return strcmp($a['name'], $b['name']);
+        });
+        break;
+    case 'za':
+        usort($products, function($a, $b) {
+            return strcmp($b['name'], $a['name']);
+        });
+        break;
+        case 'high-low':
+            // Renditja nga cmimi më i lartë
+            
+            usort($products, function($a, $b) {
+                return $b['price'] <=> $a['price'];
+            });
+           
+            break;
+        case 'low-high':
+            // Renditja nga cmimi më i ulët
+           
+            usort($products, function($a, $b) {
+                return $a['price'] <=> $b['price'];
+            });
+          
+            break;
+}
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -68,6 +106,23 @@ $products = include('data/products.php');
    <p> <a href="home.php">home</a> / shop </p>
 </div>
 
+
+   <!--Metoda per sortim -->
+   <div class="sort-dropdown">
+       <form action="" method="post">
+           <label for="sort">Sort by:</label>
+           <select id="sort" name="sort_order" onchange="this.form.submit()">
+               <option value="az" <?php echo $sortOrder == 'az' ? 'selected' : ''; ?>>Name (A-Z)</option>
+               <option value="za" <?php echo $sortOrder == 'za' ? 'selected' : ''; ?>>Name (Z-A)</option>
+               <option value="high-low" <?php echo $sortOrder == 'high-low' ? 'selected' : ''; ?>>Price (High-Low)</option>
+           <option value="low-high" <?php echo $sortOrder == 'low-high' ? 'selected' : ''; ?>>Price (Low-High)</option>
+           </select>
+       </form>
+   </div>
+</div>
+<!-- -->
+
+
 <section class="products">
 
    <h1 class="title">latest products</h1>
@@ -78,7 +133,7 @@ $products = include('data/products.php');
             <form action="" method="post" class="box">
                <img class="image" src="uploaded_img/<?php echo $product['image']; ?>" alt="">
                <div class="name"><?php echo $product['name']; ?></div>
-               <div class="price">$<?php echo $product['price']; ?>/-</div>
+               <div class="price">$<?php echo $product['price']; ?></div>
                <input type="number" min="1" name="product_quantity" value="1" class="qty">
                <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
                <input type="submit" value="Add to Cart" name="add_to_cart" class="btn">

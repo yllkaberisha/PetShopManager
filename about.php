@@ -1,20 +1,20 @@
 <?php
-class UserReview {
+lass UserReview {
    // Properties
-   protected $name;
+   protected $className;
    protected $starRating;
    protected $message;
 
    // Constructor
-   public function __construct($name, $starRating, $message) {
-       $this->name = $name;
+   public function __construct($className, $starRating, $message) {
+       $this->className = $className;
        $this->starRating = $starRating;
        $this->message = $message;
    }
 
    // Getters
-   public function getName() {
-       return $this->name;
+   public function getClassName() {
+       return $this->className;
    }
 
    public function getStarRating() {
@@ -26,8 +26,8 @@ class UserReview {
    }
 
    // Setters
-   public function setName($name) {
-       $this->name = $name;
+   public function setClassName($className) {
+       $this->className = $className;
    }
 
    public function setStarRating($starRating) {
@@ -40,7 +40,7 @@ class UserReview {
 
    // Method to display review details
    public function displayReviewDetails() {
-       echo "Class Name: " . $this->getName() . "\n";
+       echo "Class Name: " . $this->getClassName() . "\n";
        echo "Star Rating: " . $this->getStarRating() . "\n";
        echo "Message: " . $this->getMessage() . "\n";
    }
@@ -52,9 +52,9 @@ class ExtendedUserReview extends UserReview {
    private $extraInfo;
 
    // Constructor
-   public function __construct($name, $starRating, $message, $extraInfo) {
+   public function __construct($className, $starRating, $message, $extraInfo) {
        // Call parent constructor
-       parent::__construct($name, $starRating, $message);
+       parent::__construct($className, $starRating, $message);
        $this->extraInfo = $extraInfo;
    }
 
@@ -70,13 +70,12 @@ class ExtendedUserReview extends UserReview {
 }
 
 // Usage example
-$userReview1 = new UserReview("Bella", 4, "Great product!");
+$userReview1 = new UserReview("Class A", 4, "Great product!");
 $userReview1->displayReviewDetails();
 
-$userReview2 = new ExtendedUserReview("Ellie", 5, "Awesome service!", "Additional information");
+$userReview2 = new ExtendedUserReview("Class B", 5, "Awesome service!", "Additional information");
 $userReview2->displayReviewDetails();
 echo "Extra Info: " . $userReview2->getExtraInfo() . "\n";
-
 
 session_start();
 

@@ -42,7 +42,7 @@ $sortOrder = isset($_POST['sort_order']) ? $_POST['sort_order'] : 'az';
 
 switch ($sortOrder) {
     case 'az':
-      sort($products);
+      ksort($products);
         break;
     case 'za':
       rsort($products);

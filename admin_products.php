@@ -64,9 +64,9 @@ $sortBy = isset($_POST['sort_by']) ? $_POST['sort_by'] : 'name';
 switch ($sortBy) {
     case 'name':
         if ($sortOrder == 'az') {
-            ksort($products);
+            sort($products);
         } else {
-            arsort($products);
+            rsort($products);
         }
         break;
     case  'price':

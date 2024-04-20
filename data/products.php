@@ -21,4 +21,5 @@ return array (
     'price' => '95',
     'image' => 'kitten-7923121_1280.jpg',
   ),
+
 );

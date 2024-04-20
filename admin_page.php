@@ -65,7 +65,7 @@ $number_of_messages = count($messages);
             return $order['payment_status'] == 'pending' ? $order['total_price'] : 0;
         }, $orders));
         ?>
-        <h3>$<?php echo $total_pendings; ?>/-</h3>
+        <h3>$<?php echo $total_pendings; ?></h3>
         <p>total pendings</p>
     </div>
 
@@ -75,7 +75,7 @@ $number_of_messages = count($messages);
             return $order['payment_status'] == 'completed' ? $order['total_price'] : 0;
         }, $orders));
         ?>
-        <h3>$<?php echo $total_completed; ?>/-</h3>
+        <h3>$<?php echo $total_completed; ?></h3>
         <p>completed payments</p>
     </div>
 

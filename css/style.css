@@ -4,6 +4,10 @@
    --purple:#7e6a8e;
    --red:#0c0c0c;
    --orange:#1e05454a;
+   --orange:#1e054582;
+
+   /* --orange:#7c2ae899; */
+
    --black:#2c3e50;
    --white:#f2f8f8fd;
    --light-color:#888;
@@ -376,7 +380,7 @@ section{
    margin:0 auto;
    display: grid;
    grid-template-columns: repeat(auto-fit, 30rem);
-   align-items: flex-start;
+   align-items: stretch;
    gap:1.5rem;
    justify-content: center;
 }
@@ -392,6 +396,7 @@ section{
 }
 
 .products .box-container .box .image{
+   width: 90%;
    height: 30rem;
 }
 

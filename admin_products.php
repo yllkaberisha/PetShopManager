@@ -206,7 +206,7 @@ function sortProducts($products, $sort_by) {
         <div class="box">
             <img src="uploaded_img/<?php echo $product['image']; ?>" alt="">
             <div class="name"><?php echo $product['name']; ?></div>
-            <div class="price">$<?php echo $product['price']; ?>/-</div>
+            <div class="price">$<?php echo $product['price']; ?></div>
             <a href="admin_products.php?update=<?php echo $product['id']; ?>" class="option-btn">update</a>
             <a href="admin_products.php?delete=<?php echo $product['id']; ?>" class="delete-btn" onclick="return confirm('Delete this product?');">Delete</a>
         </div>

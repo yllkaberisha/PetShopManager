@@ -77,7 +77,7 @@ if(isset($_POST['add_to_cart'])){
    <form action="" method="post" class="box">
       <img class="image" src="uploaded_img/<?php echo $product['image']; ?>" alt="">
       <div class="name"><?php echo $product['name']; ?></div>
-      <div class="price">$<?php echo $product['price']; ?>/-</div>
+      <div class="price">$<?php echo $product['price']; ?></div>
       <input type="number" min="1" name="product_quantity" value="1" class="qty">
       <input type="hidden" name="product_name" value="<?php echo $product['name']; ?>">
       <input type="hidden" name="product_price" value="<?php echo $product['price']; ?>">

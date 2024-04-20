@@ -14,7 +14,7 @@ class UserReview {
 
    // Getters
    public function getName() {
-       return $this->className;
+       return $this->name;
    }
 
    public function getStarRating() {

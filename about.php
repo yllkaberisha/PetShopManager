@@ -39,10 +39,8 @@ class UserReview {
    }
 
    // Method to display review details
-   public function displayReviewDetails() {
-       echo "Class Name: " . $this->getName() . "\n";
-       echo "Star Rating: " . $this->getStarRating() . "\n";
-       echo "Message: " . $this->getMessage() . "\n";
+   public function displayReviewDetails() { 
+     
    }
 }
 
@@ -70,12 +68,18 @@ class ExtendedUserReview extends UserReview {
 }
 
 // Usage example
-$userReview1 = new UserReview("Bella", 4, "Great product!");
+$userReview1 = new UserReview
+("Ema Gashi", 4, "My experience with this online cat shop has been exceptional, from their diverse selection of cats to their thorough adoption process. Their detailed profiles and continuous support made finding and welcoming my new cat into my home a joyous experience, and she has since become an irreplaceable part of my family. I'm thankful for this shop's dedication to both their cats' well-being and fostering meaningful connections with their customers.");
 $userReview1->displayReviewDetails();
 
-$userReview2 = new ExtendedUserReview("Ellie", 5, "Awesome service!", "Additional information");
+$userReview2 = new ExtendedUserReview
+("Drin Berisha", 5, "My experience with this online cat shop exceeded all expectations! From browsing their extensive selection of cats to the seamless adoption process, every step was a delight. The staff was knowledgeable and passionate about finding the right fit for both me and the cat. I appreciated their commitment to responsible adoption practices and the thorough vetting process they conducted. I'm grateful to this online shop for making it possible.", "Additional information");
 $userReview2->displayReviewDetails();
-echo "Extra Info: " . $userReview2->getExtraInfo() . "\n";
+
+
+$userReview3 = new UserReview
+("Ela Bajrami", 5, "Discovering this online cat shop was a dream come true for me as an allergy sufferer, as their hypoallergenic cat breeds allowed me to fulfill my wish for a feline companion without compromising my health. Their seamless adoption process, coupled with the invaluable support and guidance from their staff, made the experience truly fulfilling, and I couldn't be happier with my adorable and affectionate new cat.");
+$userReview3->displayReviewDetails();
 
 session_start();
 
@@ -138,46 +142,59 @@ if(!isset($user_id)){
 
  
 
-      <div class="box">
-         <img src="images/pic-2.png" alt="">
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad, quo labore fugiat nam accusamus quia. Ducimus repudiandae dolore placeat.</p>
-         <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-         </div>
-         <h3>Yllka Berisha</h3>
-      </div>
-
-      <div class="box">
-         <img src="images/pic-3.png" alt="">
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad, quo labore fugiat nam accusamus quia. Ducimus repudiandae dolore placeat.</p>
-         <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-         </div>
-         <h3>Noar Kuleta</h3>
-      </div>
-
+   <div class="box">
+   
+    <img src="images/pic-2.png" alt="">
+    <p><?php echo $userReview1->getMessage(); ?></p>
+    <div class="stars">
+        <?php 
+        
+        $starRating = $userReview1->getStarRating();
+        for ($i = 1; $i <= 5; $i++) {
+            if ($i <= $starRating) {
+                echo '<i class="fas fa-star"></i>';
+            } else {
+                echo '<i class="fas fa-star-half-alt"></i>';
+            }
+        }
+        ?>
+    </div>
+    <h3><?php echo $userReview1->getName(); ?></h3>
+</div>
+<div class="box">
+<img src="images/pic-3.png" alt="">
+<p><?php echo $userReview2->getMessage(); ?></p>
+<div class="stars">
+    <?php 
+    $starRating = $userReview2->getStarRating();
+    for ($i = 1; $i <= 5; $i++) {
+        if ($i <= $starRating) {
+            echo '<i class="fas fa-star"></i>';
+        } else {
+            echo '<i class="fas fa-star-half-alt"></i>';
+        }
+    }
+    ?>
+</div>
+<h3><?php echo $userReview2->getName(); ?></h3>
+</div>
       <div class="box">
          <img src="images/pic-4.png" alt="">
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad, quo labore fugiat nam accusamus quia. Ducimus repudiandae dolore placeat.</p>
-         <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-         </div>
-         <h3>Lura Ibishi</h3>
-      </div>
-
-   </div>
+         <p><?php echo $userReview3->getMessage(); ?></p>
+<div class="stars">
+    <?php 
+    $starRating = $userReview3->getStarRating();
+    for ($i = 1; $i <= 5; $i++) {
+        if ($i <= $starRating) {
+            echo '<i class="fas fa-star"></i>';
+        } else {
+            echo '<i class="fas fa-star-half-alt"></i>';
+        }
+    }
+    ?>
+</div>
+<h3><?php echo $userReview3->getName(); ?></h3>
+</div>
 
 </section>
 

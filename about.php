@@ -1,5 +1,5 @@
 <?php
-lass UserReview {
+class UserReview {
    // Properties
    protected $name;
    protected $starRating;

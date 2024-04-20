@@ -56,4 +56,12 @@ return array (
     'password' => '6ad14ba9986e3615423dfca256d04e3f',
     'user_type' => 'user',
   ),
+  7 => 
+  array (
+    'id' => 9,
+    'name' => 'shqiponje',
+    'email' => 'test12@example.com',
+    'password' => '00a1f187721c63501356bf791e69382c',
+    'user_type' => 'user',
+  ),
 );

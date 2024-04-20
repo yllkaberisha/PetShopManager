@@ -158,7 +158,7 @@ if (isset($_POST['update_product'])) {
 <!-- product CRUD section ends -->
 
 <!-- Sortimi -->
-<div class="sort-dropdown">
+<!-- <div class="sort-dropdown">
        <form action="" method="post">
            <label for="sort_by">Sort by:</label>
            <select id="sort_by" name="sort_by" onchange="this.form.submit()">
@@ -171,7 +171,7 @@ if (isset($_POST['update_product'])) {
                
            </select>
        </form>
-   </div>
+   </div> -->
 
 
 <!-- show products  -->

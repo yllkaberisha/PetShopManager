@@ -52,4 +52,17 @@ return array (
     'placed_on' => '20-Apr-2024',
     'payment_status' => 'pending',
   ),
+  4 => 
+  array (
+    'user_id' => 3,
+    'name' => 'Fiek',
+    'number' => '12343252',
+    'email' => 'fiek@student.uni-pr.edu',
+    'method' => 'cash on delivery',
+    'address' => 'flat no. 1, fiek, Prishtine, Kosovo - 1000',
+    'total_products' => 'Luna (1) , Ady (2) ',
+    'total_price' => 360,
+    'placed_on' => '20-Apr-2024',
+    'payment_status' => 'completed',
+  ),
 );

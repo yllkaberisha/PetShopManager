@@ -176,11 +176,11 @@ $valid = true;
                 </div>
                 <div class="inputBox">
                     <span>city :</span>
-                    <input type="text" name="city" required placeholder="e.g. mumbai">
+                    <input type="text" name="city" required placeholder="e.g. prishtina">
                 </div>
                 <div class="inputBox">
-                    <span>state :</span>
-                    <input type="text" name="state" required placeholder="e.g. maharashtra">
+                    <span>details :</span>
+                    <input type="text" name="state" required placeholder="e.g. details">
                     <?php if (isset($_POST['state']) && !preg_match($state_pattern, $state)) {
                         echo "<p style='color:red'>Invalid state format. Please enter letters only.</p>";
                         $valid = false;
@@ -188,7 +188,7 @@ $valid = true;
                 </div>
                 <div class="inputBox">
                     <span>country :</span>
-                    <input type="text" name="country" required placeholder="e.g. india">
+                    <input type="text" name="country" required placeholder="e.g. kosovo">
                 </div>
                 <div class="inputBox">
                     <span>pin code :</span>

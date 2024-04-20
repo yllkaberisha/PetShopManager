@@ -78,7 +78,7 @@ $userReview2->displayReviewDetails();
 
 
 $userReview3 = new UserReview
-("Ela Bajrami", 5, "Discovering this online cat shop was a dream come true for me as an allergy sufferer, as their hypoallergenic cat breeds allowed me to fulfill my wish for a feline companion without compromising my health. Their seamless adoption process, coupled with the invaluable support and guidance from their staff, made the experience truly fulfilling, and I couldn't be happier with my adorable and affectionate new cat.");
+("Ela Bajrami", 5, "Discovering this online cat shop was a dream come true for me as an allergy sufferer, as their hypoallergenic cat breeds allowed me to fulfill my wish for a feline companion without compromising my health. Their seamless adoption process, coupled with the invaluable support and guidance from their staff, made the experience truly fulfilling, and I couldn't be happier with my adorable and affectionate new cat. I love this page!");
 $userReview3->displayReviewDetails();
 
 session_start();

@@ -439,6 +439,19 @@ section{
    background-color: var(--red);
 }
 
+.sort-dropdown{
+   margin: 3rem;
+   font-size: 2rem;
+   display: flex;
+   justify-content: flex-end;
+}
+
+.sort-dropdown select{
+   font-size: 1.8rem;
+   border-bottom: .4rem solid var(--purple) ;
+   color: var(--black);
+}
+
 .about .flex{
    max-width: 1200px;
    margin:0 auto;
@@ -506,7 +519,7 @@ section{
    margin:0 auto;
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-   align-items: center;
+   align-items: stretch;
    gap:1.5rem;
    justify-content: center;
 }

@@ -36,6 +36,30 @@ if(isset($_POST['add_to_cart'])){
    }
 }
 
+// Sortimi i produkteve nga emri dhe cmimi
+
+$sortOrder = isset($_POST['sort_order']) ? $_POST['sort_order'] : 'az';
+
+switch ($sortOrder) {
+    case 'az':
+      sort($products);
+        break;
+    case 'za':
+      rsort($products);
+        break;
+    case 'high-low':
+        usort($products, function($a, $b) {
+            return $b['price'] <=> $a['price'];
+        });
+        break;
+    case 'low-high':
+        usort($products, function($a, $b) {
+            return $a['price'] <=> $b['price'];
+        });
+        break;
+}
+
+
 ?>
 
 
@@ -67,6 +91,19 @@ if(isset($_POST['add_to_cart'])){
    </div>
 
 </section>
+
+<div class="sort-dropdown">
+       <form action="" method="post">
+           <label for="sort">Sort by:</label>
+           <select id="sort" name="sort_order" onchange="this.form.submit()">
+               <option value="az" <?php echo $sortOrder == 'az' ? 'selected' : ''; ?>>Name (A-Z)</option>
+               <option value="za" <?php echo $sortOrder == 'za' ? 'selected' : ''; ?>>Name (Z-A)</option>
+               <option value="high-low" <?php echo $sortOrder == 'high-low' ? 'selected' : ''; ?>>Price (High-Low)</option>
+           <option value="low-high" <?php echo $sortOrder == 'low-high' ? 'selected' : ''; ?>>Price (Low-High)</option>
+           </select>
+       </form>
+   </div>
+</div>
 
 <section class="products">
 

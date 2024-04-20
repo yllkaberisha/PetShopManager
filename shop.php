@@ -46,7 +46,7 @@ $products = include('data/products.php');
 
 
 // Renditja e produkteve sipas zgjedhjes së përdoruesit
-
+// Renditja e produkteve sipas zgjedhjes së përdoruesit
 $sortOrder = isset($_POST['sort_order']) ? $_POST['sort_order'] : 'az';
 
 switch ($sortOrder) {
@@ -60,23 +60,18 @@ switch ($sortOrder) {
             return strcmp($b['name'], $a['name']);
         });
         break;
-        case 'high-low':
-            // Renditja nga cmimi më i lartë
-            
-            usort($products, function($a, $b) {
-                return $b['price'] <=> $a['price'];
-            });
-           
-            break;
-        case 'low-high':
-            // Renditja nga cmimi më i ulët
-           
-            usort($products, function($a, $b) {
-                return $a['price'] <=> $b['price'];
-            });
-          
-            break;
+    case 'high-low':
+        usort($products, function($a, $b) {
+            return $b['price'] <=> $a['price'];
+        });
+        break;
+    case 'low-high':
+        usort($products, function($a, $b) {
+            return $a['price'] <=> $b['price'];
+        });
+        break;
 }
+
 
 
 

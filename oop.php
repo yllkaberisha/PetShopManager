@@ -112,7 +112,7 @@ class Order {
         $this->quantity = $quantity;
     }
 }
-$animal = new Animal('Dog', 'Brown', '60cm', '25kg');
+$animal = new Animal('Cat', 'Brown', '60cm', '25kg');
 $animal->introduce();
 
 $cat = new Cat('Siamese', 'White', '30cm', '5kg', 3, 'Fluffy');

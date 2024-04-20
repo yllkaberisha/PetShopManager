@@ -48,4 +48,12 @@ return array (
     'password' => '0192023a7bbd73250516f069df18b500',
     'user_type' => 'admin',
   ),
+  6 => 
+  array (
+    'id' => 8,
+    'name' => 'User',
+    'email' => 'user@example.com',
+    'password' => '6ad14ba9986e3615423dfca256d04e3f',
+    'user_type' => 'user',
+  ),
 );

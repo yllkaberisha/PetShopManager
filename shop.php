@@ -46,6 +46,7 @@ $products = include('data/products.php');
 
 
 // Renditja e produkteve sipas zgjedhjes së përdoruesit
+
 $sortOrder = isset($_POST['sort_order']) ? $_POST['sort_order'] : 'az';
 
 switch ($sortOrder) {

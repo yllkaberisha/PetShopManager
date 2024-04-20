@@ -39,17 +39,4 @@ return array (
     'placed_on' => '12-Apr-2024',
     'payment_status' => 'pending',
   ),
-  3 => 
-  array (
-    'user_id' => 3,
-    'name' => 'fiek',
-    'number' => '312',
-    'email' => 'test@gmacdv.dfsd',
-    'method' => 'cash on delivery',
-    'address' => 'flat no. 23, 353, rwe, hsfjdsh - 423432',
-    'total_products' => 'Product 1 (1) , cat (3) ',
-    'total_price' => 125,
-    'placed_on' => '19-Apr-2024',
-    'payment_status' => 'pending',
-  ),
 );

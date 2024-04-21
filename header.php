@@ -1,5 +1,33 @@
 <?php
 
+// Declare a global variable
+global $pageName;
+$pageName = '   Kitty   ';
+
+$name = strtoupper($pageName);
+$name = trim($name);
+$name = substr($name, 2);
+
+// var_dump($pageName);
+
+
+$catNames = array("Whiskers", "Mittens", "Felix", "Luna", "Simba");
+$catNames[] = "Tiger";
+
+// echo "List of cat names:<br>";
+foreach ($catNames as $name) {
+   //  echo $name . "<br>";
+}
+
+$catInfo = array(
+   "Whiskers" => "Gray",
+   "Mittens" => "White",
+   "Felix" => "Black",
+   "Luna" => "Calico",
+   "Simba" => "Orange"
+);
+
+
 if(isset($message)){
    foreach($message as $message){
       echo '

@@ -72,6 +72,38 @@ switch ($sortOrder) {
         break;
 }
 
+// switch ($sortOrder) {
+//     case 'az':
+//         sort($products); // Sort by value (ascending)
+//         break;
+//     case 'za':
+//         rsort($products); // Sort by value (descending)
+//         break;
+//     case 'high-low':
+//         usort($products, function($a, $b) {
+//             return $b['price'] <=> $a['price']; // Sort associative array by value (descending)
+//         });
+//         break;
+//     case 'low-high':
+//         usort($products, function($a, $b) {
+//             return $a['price'] <=> $b['price']; // Sort associative array by value (ascending)
+//         });
+//         break;
+//     case 'asc-key':
+//         ksort($products); // Sort associative array by key (ascending)
+//         break;
+//     case 'desc-key':
+//         krsort($products); // Sort associative array by key (descending)
+//         break;
+//     case 'asc-value':
+//         asort($products); // Sort associative array by value (ascending), maintaining key associations
+//         break;
+//     case 'desc-value':
+//         arsort($products); // Sort associative array by value (descending), maintaining key associations
+//         break;
+// }
+
+
 
 
 

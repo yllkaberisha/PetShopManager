@@ -95,12 +95,17 @@ if(isset($_POST['submit'])){
                      </div>
 
                      <?php
-                     if (isset($message)) {
-                        echo '
-                              <h3 style="color: red;">' . $message . '</h3>
-                              ';
+                 
+
+                     if(isset($message)){
+                        foreach($message as $message){
+                           echo '
+                           <h3 style="color: red;">' . $message . '</h3>
+                           ';
+                        }
                      }
                      ?>
+              
 
                      <div class="text sign-up-text">Don't have an account? <a href="register.php">Register now</a></div>
                   </div>

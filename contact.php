@@ -29,6 +29,78 @@ if(isset($_POST['send'])){
 }
 
 ?>
+<?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+if(isset($_POST['send'])){
+$name = $_POST['name'];
+$email = $_POST['email'];
+$number = $_POST['number'];
+$message = $_POST['message'];
+
+
+//Load Composer's autoloader
+require 'PHPMailer/Exception.php';
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
+
+//Create an instance; passing `true` enables exceptions
+$mail = new PHPMailer(true);
+
+try {
+   //Server settings
+   //Enable verbose debug output
+   $mail->isSMTP();                                            //Send using SMTP
+   $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+   $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+   $mail->Username   = 'shqiponjedani23@gmail.com';                     //SMTP username
+   $mail->Password   = 'rgpv gkvh wfwz elvk';                               //SMTP password
+   $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+   $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+   //Recipients
+   $mail->setFrom('shqiponjedani23@gmail.com', 'Contact Form');
+   $mail->addAddress('shqiponje.danii@gmail.com', 'Website');     //Add a recipient
+  
+
+   
+
+   //Content
+   $mail->isHTML(true);                                  //Set email format to HTML
+   $mail->Subject = 'Test Contact Form';
+   $mail->Body    = "Sender Name - $name <br> Sender Email - $email <br> number - $number <br> message - $message ";
+  
+
+   $mail->send();
+   echo '<script>
+   document.addEventListener("DOMContentLoaded", function() {
+       Swal.fire({
+           title: "Success",
+           text: "Message sent successfully!",
+           icon: "success",
+           confirmButtonText: "OK"
+       });
+   });
+ </script>';;
+} catch (Exception $e) {
+   echo '<script>
+   document.addEventListener("DOMContentLoaded", function() {
+       Swal.fire({
+           title: "Error",
+           text: "Message could not be sent. Mailer Error: ' . $mail->ErrorInfo . '",
+           icon: "error",
+           confirmButtonText: "OK"
+       });
+   });
+ </script>';
+}
+  
+
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,6 +120,8 @@ if(isset($_POST['send'])){
 <body>
    
 <?php include 'header.php'; ?>
+
+
 
 <div class="heading">
    <h3>contact us</h3>
@@ -77,7 +151,9 @@ if(isset($_POST['send'])){
 <?php include 'footer.php'; ?>
 
 <!-- custom js file link  -->
-<script src="js/script.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
 </body>
 </html>

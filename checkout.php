@@ -10,13 +10,13 @@ if (!isset($user_id)) {
    header('location:login.php');
 }
 
-if(isset($_POST['order_btn'])){
+if (isset($_POST['order_btn'])) {
 
    $name = $_POST['name'];
    $number = $_POST['number'];
    $email = $_POST['email'];
    $method = $_POST['method'];
-   $address = 'flat no. '. $_POST['flat'].', '. $_POST['street'].', '. $_POST['city'].', '. $_POST['country'].' - '. $_POST['pin_code'];
+   $address = 'flat no. ' . $_POST['flat'] . ', ' . $_POST['street'] . ', ' . $_POST['city'] . ', ' . $_POST['country'] . ' - ' . $_POST['pin_code'];
    $placed_on = date('d-M-Y');
 
    $cart_total = 0;
@@ -28,9 +28,9 @@ if(isset($_POST['order_btn'])){
    $cart_query->execute();
    $result = $cart_query->get_result();
 
-   if($result->num_rows > 0){
-      while($cart_item = $result->fetch_assoc()){
-         $cart_products[] = $cart_item['name'].' ('.$cart_item['quantity'].') ';
+   if ($result->num_rows > 0) {
+      while ($cart_item = $result->fetch_assoc()) {
+         $cart_products[] = $cart_item['name'] . ' (' . $cart_item['quantity'] . ') ';
          $sub_total = ($cart_item['price'] * $cart_item['quantity']);
          $cart_total += $sub_total;
       }
@@ -45,18 +45,18 @@ if(isset($_POST['order_btn'])){
    $order_query->execute();
    $result = $order_query->get_result();
 
-   if($cart_total == 0){
+   if ($cart_total == 0) {
       $message[] = 'your cart is empty';
    } else {
-      if($result->num_rows > 0){
-         $message[] = 'order already placed!'; 
+      if ($result->num_rows > 0) {
+         $message[] = 'order already placed!';
       } else {
          // Prepare the insert order query
          $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name, number, email, method, address, total_products, total_price, placed_on) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
          $insert_order->bind_param("issssssds", $user_id, $name, $number, $email, $method, $address, $total_products, $cart_total, $placed_on);
          $insert_order->execute();
 
-         if($insert_order->affected_rows > 0){
+         if ($insert_order->affected_rows > 0) {
             $message[] = 'order placed successfully!';
 
             // Prepare the delete cart query
@@ -114,9 +114,10 @@ if(isset($_POST['order_btn'])){
          while ($fetch_cart = mysqli_fetch_assoc($cart_result)) {
             $total_price = ($fetch_cart['price'] * $fetch_cart['quantity']);
             $grand_total += $total_price;
-      ?>
-            <p> <?php echo $fetch_cart['name']; ?> <span>(<?php echo '$' . $fetch_cart['price'] . '' . ' x ' . $fetch_cart['quantity']; ?>)</span> </p>
-         <?php
+            ?>
+            <p> <?php echo $fetch_cart['name']; ?>
+               <span>(<?php echo '$' . $fetch_cart['price'] . '' . ' x ' . $fetch_cart['quantity']; ?>)</span> </p>
+            <?php
          }
       } else {
          echo '<p class="empty">your cart is empty</p>';
@@ -126,61 +127,61 @@ if(isset($_POST['order_btn'])){
 
    </section>
 
-<section class="checkout">
+   <section class="checkout">
 
-   <form action="" method="post">
-      <h3>place your order</h3>
-      <div class="flex">
-         <div class="inputBox">
-            <span>your name :</span>
-            <input type="text" name="name" required placeholder="enter your name">
+      <form action="" method="post">
+         <h3>place your order</h3>
+         <div class="flex">
+            <div class="inputBox">
+               <span>your name :</span>
+               <input type="text" name="name" required placeholder="enter your name">
+            </div>
+            <div class="inputBox">
+               <span>your number :</span>
+               <input type="number" name="number" required placeholder="enter your number">
+            </div>
+            <div class="inputBox">
+               <span>your email :</span>
+               <input type="email" name="email" required placeholder="enter your email">
+            </div>
+            <div class="inputBox">
+               <span>payment method :</span>
+               <select name="method">
+                  <option value="cash on delivery">cash on delivery</option>
+                  <option value="credit card">credit card</option>
+                  <option value="paypal">paypal</option>
+                  <option value="paytm">paytm</option>
+               </select>
+            </div>
+            <div class="inputBox">
+               <span>address line 01 :</span>
+               <input type="number" min="0" name="flat" required placeholder="e.g. flat no.">
+            </div>
+            <div class="inputBox">
+               <span>address line 01 :</span>
+               <input type="text" name="street" required placeholder="e.g. street name">
+            </div>
+            <div class="inputBox">
+               <span>city :</span>
+               <input type="text" name="city" required placeholder="e.g. mumbai">
+            </div>
+            <div class="inputBox">
+               <span>details :</span>
+               <input type="text" name="details" required placeholder="e.g. any detail ">
+            </div>
+            <div class="inputBox">
+               <span>country :</span>
+               <input type="text" name="country" required placeholder="e.g. india">
+            </div>
+            <div class="inputBox">
+               <span>pin code :</span>
+               <input type="number" min="0" name="pin_code" required placeholder="e.g. 123456">
+            </div>
          </div>
-         <div class="inputBox">
-            <span>your number :</span>
-            <input type="number" name="number" required placeholder="enter your number">
-         </div>
-         <div class="inputBox">
-            <span>your email :</span>
-            <input type="email" name="email" required placeholder="enter your email">
-         </div>
-         <div class="inputBox">
-            <span>payment method :</span>
-            <select name="method">
-               <option value="cash on delivery">cash on delivery</option>
-               <option value="credit card">credit card</option>
-               <option value="paypal">paypal</option>
-               <option value="paytm">paytm</option>
-            </select>
-         </div>
-         <div class="inputBox">
-            <span>address line 01 :</span>
-            <input type="number" min="0" name="flat" required placeholder="e.g. flat no.">
-         </div>
-         <div class="inputBox">
-            <span>address line 01 :</span>
-            <input type="text" name="street" required placeholder="e.g. street name">
-         </div>
-         <div class="inputBox">
-            <span>city :</span>
-            <input type="text" name="city" required placeholder="e.g. mumbai">
-         </div>
-         <div class="inputBox">
-            <span>details :</span>
-            <input type="text" name="details" required placeholder="e.g. any detail ">
-         </div>
-         <div class="inputBox">
-            <span>country :</span>
-            <input type="text" name="country" required placeholder="e.g. india">
-         </div>
-         <div class="inputBox">
-            <span>pin code :</span>
-            <input type="number" min="0" name="pin_code" required placeholder="e.g. 123456">
-         </div>
-      </div>
-      <input type="submit" value="order now" class="btn" name="order_btn">
-   </form>
+         <input type="submit" value="order now" class="btn" name="order_btn">
+      </form>
 
-</section>
+   </section>
 
 
 
@@ -190,10 +191,11 @@ if(isset($_POST['order_btn'])){
 
 
 
-<?php include 'footer.php'; ?>
+   <?php include 'footer.php'; ?>
 
-<!-- custom js file link  -->
-<script src="js/script.js"></script>
+   <!-- custom js file link  -->
+   <script src="js/script.js"></script>
 
 </body>
+
 </html>

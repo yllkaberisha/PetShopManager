@@ -41,6 +41,10 @@ if (isset($_POST['submit'])) {
       $message = 'Incorrect email or password!';
    }
 }
+
+// Percjellja permes references
+$subscribe_text = "Enter your email";
+$input_placeholder=& $subscribe_text;
 ?>
 
 <!DOCTYPE html>
@@ -89,7 +93,12 @@ if (isset($_POST['submit'])) {
                   <div class="input-boxes">
                      <div class="input-box">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" name="email" placeholder="Enter your email" required>
+
+                         <!-- Kthimi permes references -->
+                         <input type="email" name="email" placeholder="<?php echo $input_placeholder ?>" required>
+                                
+
+                     
                      </div>
                      <div class="input-box">
                         <i class="fas fa-lock"></i>

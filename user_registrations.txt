@@ -1,0 +1,1 @@
+User registration - Name: root, Email: root@example.com

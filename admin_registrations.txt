@@ -1,0 +1,2 @@
+Admin registration - Name: i, Email: i@gmail.com
+Admin registration - Name: info12, Email: info@example.com

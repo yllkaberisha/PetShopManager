@@ -1,6 +1,18 @@
 <?php
 
 include 'config.php';
+function logUserRegistration($name, $email) {
+    $file = fopen("user_registrations.txt", "a"); // Hap skedarin për shkrim (mode "a" për të shtuar në fund të skedarit)
+    fwrite($file, "User registration - Name: $name, Email: $email\n"); // Shkruan mesazhin në skedar dhe shton një rresht të ri
+    fclose($file); // Mbyll skedarin
+}
+
+// Funksioni për të shkruar mesazhet në një skedar log për admin
+function logAdminRegistration($name, $email) {
+    $file = fopen("admin_registrations.txt", "a"); // Hap skedarin për shkrim (mode "a" për të shtuar në fund të skedarit)
+    fwrite($file, "Admin registration - Name: $name, Email: $email\n"); // Shkruan mesazhin në skedar dhe shton një rresht të ri
+    fclose($file); // Mbyll skedarin
+}
 
 if(isset($_POST['submit'])){
 
@@ -20,6 +32,11 @@ if(isset($_POST['submit'])){
       }else{
          mysqli_query($conn, "INSERT INTO `users`(name, email, password, user_type) VALUES('$name', '$email', '$cpass', '$user_type')") or die('query failed');
          $message[] = 'registered successfully!';
+         if($user_type == 'user'){
+            logUserRegistration($name,$email);
+         }else if($user_type =='admin'){
+            logAdminRegistration($name,$email);
+         }
          header('location:login.php');
       }
    }

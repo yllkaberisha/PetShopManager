@@ -59,3 +59,31 @@ unset($d);
 $d['price'] = 45;
 echo "Çmimi i \$c pas unset(): " . $c['price'] . "\n"; // Shfaq 50
 
+// Përdorimi i funksionit unset()
+$variabli = array('name' => 'Kotele', 'price' => 50);
+unset($variabli['price']);
+if (!isset($variabli['price'])) {
+    echo "Çmimi i variablit është i pa përcaktuar pas unset()\n"; // Shfaq mesazhin që çmimi është i papërcaktuar
+}
+
+// Funksione për menaxhimin e produkteve (macet)
+function ulÇmimin(&$product, $discount) {
+    $product['price'] -= $discount;
+}
+
+function shtoNëShportë(&$cart, $product) {
+    $cart[] = $product;
+}
+
+function përditësoInformacioninEProduktit(&$product, $newInfo) {
+    $product = array_merge($product, $newInfo);
+}
+
+function &gjejProduktinSipasID(&$products, $productId) {
+    foreach ($products as &$product) {
+        if ($product['id'] == $productId) {
+            return $product;
+        }
+    }
+    return null;
+}

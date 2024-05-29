@@ -67,23 +67,19 @@ if (!isset($variabli['price'])) {
 }
 
 // Funksione për menaxhimin e produkteve (macet)
-function ulÇmimin(&$product, $discount)
-{
+function ulÇmimin(&$product, $discount) {
     $product['price'] -= $discount;
 }
 
-function shtoNëShportë(&$cart, $product)
-{
+function shtoNëShportë(&$cart, $product) {
     $cart[] = $product;
 }
 
-function përditësoInformacioninEProduktit(&$product, $newInfo)
-{
+function përditësoInformacioninEProduktit(&$product, $newInfo) {
     $product = array_merge($product, $newInfo);
 }
 
-function &gjejProduktinSipasID(&$products, $productId)
-{
+function &gjejProduktinSipasID(&$products, $productId) {
     foreach ($products as &$product) {
         if ($product['id'] == $productId) {
             return $product;

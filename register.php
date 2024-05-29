@@ -78,6 +78,22 @@ if (isset($_POST['submit'])) {
       ';
         }
     }
+
+    //1 
+
+    //percjellja permes references
+    $r_titulli="regjistrohu";
+    $subscribe_text = "Enter your name";
+    $input_placeholder=& $subscribe_text;
+
+    // kthimi perrmes references
+
+    function change_r_titulli(&$r_titulli_ref){
+        $r_titulli_ref="Signup";
+    }
+
+    change_r_titulli($r_titulli);
+
     ?>
 
     <div class="container">
@@ -102,12 +118,16 @@ if (isset($_POST['submit'])) {
             <div class="form-content">
 
                 <div class="signup-form">
-                    <div class="title">Signup</div>
+                         <!-- thirr permes references-->
+                    <div class="title"><?php echo $r_titulli; ?></div>
+                    
                     <form action="" method="post">
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-user"></i>
-                                <input type="text" name="name" placeholder="Enter your name" required>
+                                <!-- 1 -->
+                                <input type="text" name="name" placeholder="<?php echo $input_placeholder ?>" required>
+                                <!-- 1 -->
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>

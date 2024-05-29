@@ -1,12 +1,4 @@
 
-
-29 May 2024
-15:04
-
-
-
-
-
 <?php
 include 'config.php';
 function logUserRegistration($name, $email) {

@@ -29,6 +29,8 @@ $number_of_admins = count(array_filter($users, function($user) { return $user['u
 $number_of_accounts = count($users);
 $number_of_messages = count($messages);
 
+
+$t1= "dashboard";
 ?>
 
 
@@ -54,9 +56,9 @@ $number_of_messages = count($messages);
 <!-- admin dashboard section starts  -->
 
 <section class="dashboard">
-
-   <h1 class="title">dashboard</h1>
-
+<!-- 1 -->
+   <h1 class="title"><?php echo $t1; ?></h1>
+<!-- 1 -->
    <div class="box-container">
 
     <div class="box">

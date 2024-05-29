@@ -62,13 +62,13 @@ switch ($sortOrder) {
 // 1
 
 $t3 ="have any questions?";
-
+// Krijimi i nje reference te variables $t3
 $referenceT3= &$t3;
-
+//Shtyp vleren $t3 para largimit te references
 echo $t3;
-
+// largo referencen
 unset($referenceT3);
-
+// shtyp vleren pas largimit te references
 echo $t3;
 
 
@@ -164,7 +164,7 @@ echo $t3;
 <section class="home-contact">
 
    <div class="content">
-    <!-- 1  -->
+    
       <h3><?php echo $t3; ?></h3>
       <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque cumque exercitationem repellendus, amet ullam voluptatibus?</p>
       <a href="contact.php" class="white-btn">contact us</a>

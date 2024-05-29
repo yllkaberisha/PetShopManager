@@ -20,7 +20,7 @@ if (isset($_COOKIE['text_color'])) {
 if (isset($_COOKIE['logo'])) {
     $logo = $_COOKIE['logo'];
 } else {
-    $logo = './images/logo.png'; 
+    $logo = './images/logo.png';
 }
 
 // Check if the font size preference cookie is set

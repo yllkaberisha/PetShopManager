@@ -1,3 +1,18 @@
+
+<?php
+// Definimi i funksionit për trajtim të gabimeve
+function customErrorHandler($errno, $errstr, $errfile, $errline, $errcontext) {
+    $errorMessage = "Gabim [$errno]: $errstr në linjën $errline në skedarin $errfile";
+    // Mund të shtoni më shumë detaje si errcontext nëse është e nevojshme
+    // Për momentin do ta paraqesim gabimin dhe do ta ndalojmë ekzekutimin
+    echo "<b>Gabim i personalizuar:</b> $errorMessage<br>";
+    /* Mund ta logoni gabimin në një skedar ose bazë të dhënash këtu nëse dëshironi */
+    die();
+}
+
+// Vendosja e funksionit të gabimeve si handler i paracaktuar
+set_error_handler("customErrorHandler");
+?>
 <?php
 // Funksioni që kontrollon nëse tabela ekziston
 function tableExists($conn, $tableName) {
@@ -59,16 +74,26 @@ $tables = [
 ];
 
 // Loop through the tables array and create each table if it doesn't exist
-foreach ($tables as $tableName => $sql) {
-    if (!tableExists($conn, $tableName)) {
-        if ($conn->query($sql) === TRUE) {
-            echo "Tabela '$tableName' u krijua me sukses!<br>";
+try {
+    // Loop përmes array-it të tabelave dhe krijimi i çdo tabele nëse nuk ekziston
+    foreach ($tables as $tableName => $sql) {
+        if (!tableExists($conn, $tableName)) {
+            if ($conn->query($sql) === TRUE) {
+                echo "Tabela '$tableName' u krijua me sukses!<br>";
+            } else {
+                throw new Exception("Gabim gjatë krijimit të tabelës '$tableName': " . $conn->error);
+            }
         } else {
-            echo "Gabim gjatë krijimit të tabeles '$tableName': " . $conn->error . "<br>";
+            echo "Tabela '$tableName' ekziston.<br>";
         }
     }
+} catch (Exception $e) {
+    // Kapja e përjashtimeve dhe paraqitja e mesazhit të gabimit
+    echo "Një përjashtim ndodhi: " . $e->getMessage();
+} finally {
+    // Mbyllja e lidhjes me bazën e të dhënave
+    $conn->close();
 }
 
-// Mbyll lidhjen me bazën e të dhënave
-$conn->close();
+?>
 ?>

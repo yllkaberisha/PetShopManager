@@ -36,10 +36,23 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 if(isset($_POST['send'])){
-$name = $_POST['name'];
-$email = $_POST['email'];
-$number = $_POST['number'];
-$message = $_POST['message'];
+   $name = filter_var($_POST['name'], FILTER_SANITIZE_SPECIAL_CHARS);
+   $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+   $number = filter_var($_POST['number'], FILTER_SANITIZE_NUMBER_INT);
+   $message = filter_var($_POST['message'], FILTER_SANITIZE_SPECIAL_CHARS);
+   if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      echo '<script>
+      document.addEventListener("DOMContentLoaded", function() {
+          Swal.fire({
+              title: "Error",
+              text: "Invalid email format",
+              icon: "error",
+              confirmButtonText: "OK"
+          });
+      });
+      </script>';
+      exit;
+  }
 
 
 //Load Composer's autoloader

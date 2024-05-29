@@ -87,3 +87,25 @@ function &gjejProduktinSipasID(&$products, $productId) {
     }
     return null;
 }
+// Shembuj për menaxhimin e produkteve (macet)
+$produkt = array('name' => 'Kotele', 'price' => 50);
+ulÇmimin($produkt, 5);
+echo "Çmimi i përditësuar pas uljes: " . $produkt['price'] . "\n"; // Shfaq 45
+
+$shporta = array();
+shtoNëShportë($shporta, $produkt);
+print_r($shporta); // Shfaq produktin në shportë
+
+$informacioniIRi = array('price' => 40);
+përditësoInformacioninEProduktit($produkt, $informacioniIRi);
+print_r($produkt); // Shfaq produktin me çmimin e përditësuar
+
+$products = array(
+    array('id' => 1, 'name' => 'Kotele', 'price' => 50),
+    array('id' => 2, 'name' => 'Qen', 'price' => 100)
+);
+
+$produktRef = &gjejProduktinSipasID($products, 1);
+$produktRef['price'] = 45;
+print_r($products); // Shfaq produktet me çmimin e përditësuar për Kotele
+?>

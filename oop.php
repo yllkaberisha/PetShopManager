@@ -1,114 +1,140 @@
 <?php
-class Animal {
+class Animal
+{
     protected $breed;
     protected $color;
     protected $height;
     protected $weight;
 
-    public function __construct($breed, $color, $height, $weight) {
+    public function __construct($breed, $color, $height, $weight)
+    {
         $this->breed = $breed;
         $this->color = $color;
         $this->height = $height;
         $this->weight = $weight;
-       // echo "Animal created: " . $this->breed . "\n";
+        // echo "Animal created: " . $this->breed . "\n";
     }
 
-    public function __destruct() {
+    public function __destruct()
+    {
         echo "Animal destroyed: " . $this->breed . "\n";
     }
-    public function introduce() {
+    public function introduce()
+    {
         echo "I am a " . $this->breed . " with " . $this->color . " fur. I am " . $this->height . " tall and weigh " . $this->weight . ".\n";
     }
 
-    public function getBreed() {
+    public function getBreed()
+    {
         return $this->breed;
     }
-    public function setBreed($breed) {
+    public function setBreed($breed)
+    {
         $this->breed = $breed;
     }
 
-    public function getColor() {
+    public function getColor()
+    {
         return $this->color;
     }
-    public function setColor($color) {
+    public function setColor($color)
+    {
         $this->color = $color;
     }
 
-    public function getHeight() {
+    public function getHeight()
+    {
         return $this->height;
     }
-    public function setHeight($height) {
+    public function setHeight($height)
+    {
         $this->height = $height;
     }
 
-    public function getWeight() {
+    public function getWeight()
+    {
         return $this->weight;
     }
-    public function setWeight($weight) {
+    public function setWeight($weight)
+    {
         $this->weight = $weight;
     }
 }
 
-class Cat extends Animal {
+class Cat extends Animal
+{
     private $age;
     private $name;
 
-    public function __construct($breed, $color, $height, $weight, $age, $name) {
+    public function __construct($breed, $color, $height, $weight, $age, $name)
+    {
         parent::__construct($breed, $color, $height, $weight);
         $this->age = $age;
         $this->name = $name;
     }
 
-    public function getAge() {
+    public function getAge()
+    {
         return $this->age;
     }
 
-    public function setAge($age) {
+    public function setAge($age)
+    {
         $this->age = $age;
     }
 
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
     }
 }
 
-class Order {
+class Order
+{
     private $orderId;
     private $product;
     private $quantity;
 
-    public function __construct($orderId, $product, $quantity) {
+    public function __construct($orderId, $product, $quantity)
+    {
         $this->orderId = $orderId;
         $this->product = $product;
         $this->quantity = $quantity;
         echo "Order created: " . $this->orderId . " for product: " . $this->product . "\n";
     }
 
-    public function getOrderId() {
+    public function getOrderId()
+    {
         return $this->orderId;
     }
 
-    public function setOrderId($orderId) {
+    public function setOrderId($orderId)
+    {
         $this->orderId = $orderId;
     }
 
-    public function getProduct() {
+    public function getProduct()
+    {
         return $this->product;
     }
 
-    public function setProduct($product) {
+    public function setProduct($product)
+    {
         $this->product = $product;
     }
 
-    public function getQuantity() {
+    public function getQuantity()
+    {
         return $this->quantity;
     }
 
-    public function setQuantity($quantity) {
+    public function setQuantity($quantity)
+    {
         $this->quantity = $quantity;
     }
 }

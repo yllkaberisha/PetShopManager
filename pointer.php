@@ -2,7 +2,8 @@
 // Përdorimi dhe kuptimi i pointerëve në PHP
 
 // Përcjellja përmes referencës
-function shtoPesëNëÇmim(&$product) {
+function shtoPesëNëÇmim(&$product)
+{
     $product['price'] += 5;
 }
 
@@ -22,7 +23,8 @@ $macet[1]['price'] = 65;
 echo "Çmimi i macet[0]: " . $macet[0]['price'] . "\n"; // Shfaq 65
 
 // Përcjellja e vlerës përmes referencës
-function ndryshoÇmimin(&$product, $newPrice) {
+function ndryshoÇmimin(&$product, $newPrice)
+{
     $product['price'] = $newPrice;
 }
 
@@ -31,7 +33,8 @@ ndryshoÇmimin($a, 45);
 echo "Çmimi i përditësuar i \$a: " . $a['price'] . "\n"; // Shfaq 45
 
 // Përdorimi i funksioneve me referencë
-function &gjejProduktin(&$products, $productName) {
+function &gjejProduktin(&$products, $productName)
+{
     foreach ($products as &$product) {
         if ($product['name'] == $productName) {
             return $product;

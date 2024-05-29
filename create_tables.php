@@ -1,7 +1,7 @@
-
 <?php
 // Definimi i funksionit për trajtim të gabimeve
-function customErrorHandler($errno, $errstr, $errfile, $errline, $errcontext) {
+function customErrorHandler($errno, $errstr, $errfile, $errline, $errcontext)
+{
     $errorMessage = "Gabim [$errno]: $errstr në linjën $errline në skedarin $errfile";
     // Mund të shtoni më shumë detaje si errcontext nëse është e nevojshme
     // Për momentin do ta paraqesim gabimin dhe do ta ndalojmë ekzekutimin
@@ -15,7 +15,8 @@ set_error_handler("customErrorHandler");
 ?>
 <?php
 // Funksioni që kontrollon nëse tabela ekziston
-function tableExists($conn, $tableName) {
+function tableExists($conn, $tableName)
+{
     $result = $conn->query("SHOW TABLES LIKE '$tableName'");
     return $result->num_rows > 0;
 }
@@ -96,4 +97,3 @@ try {
 }
 
 ?>
-

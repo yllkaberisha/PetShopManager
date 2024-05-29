@@ -6,11 +6,11 @@ session_start();
 
 $user_id = $_SESSION['user_id'];
 
-if(!isset($user_id)){
+if (!isset($user_id)) {
    header('location:login.php');
 }
 
-if(isset($_POST['send'])){
+if (isset($_POST['send'])) {
 
    $name = mysqli_real_escape_string($conn, $_POST['name']);
    $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -19,9 +19,9 @@ if(isset($_POST['send'])){
 
    $select_message = mysqli_query($conn, "SELECT * FROM `message` WHERE name = '$name' AND email = '$email' AND number = '$number' AND message = '$msg'") or die('query failed');
 
-   if(mysqli_num_rows($select_message) > 0){
+   if (mysqli_num_rows($select_message) > 0) {
       $message[] = 'message sent already!';
-   }else{
+   } else {
       mysqli_query($conn, "INSERT INTO `message`(user_id, name, email, number, message) VALUES('$user_id', '$name', '$email', '$number', '$msg')") or die('query failed');
       $message[] = 'message sent successfully!';
    }
@@ -35,7 +35,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-if(isset($_POST['send'])){
+if (isset($_POST['send'])) {
    $name = filter_var($_POST['name'], FILTER_SANITIZE_SPECIAL_CHARS);
    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
    $number = filter_var($_POST['number'], FILTER_SANITIZE_NUMBER_INT);
@@ -52,43 +52,43 @@ if(isset($_POST['send'])){
       });
       </script>';
       exit;
-  }
+   }
 
 
-//Load Composer's autoloader
-require 'PHPMailer/Exception.php';
-require 'PHPMailer/PHPMailer.php';
-require 'PHPMailer/SMTP.php';
+   //Load Composer's autoloader
+   require 'PHPMailer/Exception.php';
+   require 'PHPMailer/PHPMailer.php';
+   require 'PHPMailer/SMTP.php';
 
-//Create an instance; passing `true` enables exceptions
-$mail = new PHPMailer(true);
+   //Create an instance; passing `true` enables exceptions
+   $mail = new PHPMailer(true);
 
-try {
-   //Server settings
-   //Enable verbose debug output
-   $mail->isSMTP();                                            //Send using SMTP
-   $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-   $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-   $mail->Username   = 'shqiponjedani23@gmail.com';                     //SMTP username
-   $mail->Password   = 'rgpv gkvh wfwz elvk';                               //SMTP password
-   $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-   $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+   try {
+      //Server settings
+      //Enable verbose debug output
+      $mail->isSMTP();                                            //Send using SMTP
+      $mail->Host = 'smtp.gmail.com';                     //Set the SMTP server to send through
+      $mail->SMTPAuth = true;                                   //Enable SMTP authentication
+      $mail->Username = 'shqiponjedani23@gmail.com';                     //SMTP username
+      $mail->Password = 'rgpv gkvh wfwz elvk';                               //SMTP password
+      $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+      $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-   //Recipients
-   $mail->setFrom('shqiponjedani23@gmail.com', 'Contact Form');
-   $mail->addAddress('shqiponje.danii@gmail.com', 'Website');     //Add a recipient
-  
+      //Recipients
+      $mail->setFrom('shqiponjedani23@gmail.com', 'Contact Form');
+      $mail->addAddress('shqiponje.danii@gmail.com', 'Website');     //Add a recipient
 
-   
 
-   //Content
-   $mail->isHTML(true);                                  //Set email format to HTML
-   $mail->Subject = 'Test Contact Form';
-   $mail->Body    = "Sender Name - $name <br> Sender Email - $email <br> number - $number <br> message - $message ";
-  
 
-   $mail->send();
-   echo '<script>
+
+      //Content
+      $mail->isHTML(true);                                  //Set email format to HTML
+      $mail->Subject = 'Test Contact Form';
+      $mail->Body = "Sender Name - $name <br> Sender Email - $email <br> number - $number <br> message - $message ";
+
+
+      $mail->send();
+      echo '<script>
    document.addEventListener("DOMContentLoaded", function() {
        Swal.fire({
            title: "Success",
@@ -97,9 +97,10 @@ try {
            confirmButtonText: "OK"
        });
    });
- </script>';;
-} catch (Exception $e) {
-   echo '<script>
+ </script>';
+      ;
+   } catch (Exception $e) {
+      echo '<script>
    document.addEventListener("DOMContentLoaded", function() {
        Swal.fire({
            title: "Error",
@@ -109,14 +110,15 @@ try {
        });
    });
  </script>';
-}
-  
+   }
+
 
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -130,43 +132,45 @@ try {
    <link rel="stylesheet" href="css/style.css">
 
 </head>
+
 <body>
-   
-<?php include 'header.php'; ?>
+
+   <?php include 'header.php'; ?>
 
 
 
-<div class="heading">
-   <h3>contact us</h3>
-   <p> <a href="home.php">home</a> / contact </p>
-</div>
+   <div class="heading">
+      <h3>contact us</h3>
+      <p> <a href="home.php">home</a> / contact </p>
+   </div>
 
-<section class="contact">
+   <section class="contact">
 
-   <form action="" method="post">
-      <h3>say something!</h3>
-      <input type="text" name="name" required placeholder="enter your name" class="box">
-      <input type="email" name="email" required placeholder="enter your email" class="box">
-      <input type="number" name="number" required placeholder="enter your number" class="box">
-      <textarea name="message" class="box" placeholder="enter your message" id="" cols="30" rows="10"></textarea>
-      <input type="submit" value="send message" name="send" class="btn">
-   </form>
+      <form action="" method="post">
+         <h3>say something!</h3>
+         <input type="text" name="name" required placeholder="enter your name" class="box">
+         <input type="email" name="email" required placeholder="enter your email" class="box">
+         <input type="number" name="number" required placeholder="enter your number" class="box">
+         <textarea name="message" class="box" placeholder="enter your message" id="" cols="30" rows="10"></textarea>
+         <input type="submit" value="send message" name="send" class="btn">
+      </form>
 
-</section>
-
-
-
-
+   </section>
 
 
 
 
-<?php include 'footer.php'; ?>
 
-<!-- custom js file link  -->
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+
+   <?php include 'footer.php'; ?>
+
+   <!-- custom js file link  -->
+
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
 </body>
+
 </html>

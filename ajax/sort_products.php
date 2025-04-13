@@ -1,6 +1,6 @@
 <?php
+include dirname(__DIR__) . '/config.php';
 
-include '../config.php';
 
 $sort_order = $_POST['sort_order'];
 $order_query = '';

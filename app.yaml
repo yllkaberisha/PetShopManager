@@ -18,5 +18,5 @@ entrypoint: serve handler.php
 env_variables:
   CLOUDSQL_USER: root
   CLOUDSQL_DB: shop_db
-  CLOUDSQL_PASSWORD: "[p~pEx0pYx9T)=#<""
+  CLOUDSQL_PASSWORD: "[p~pEx0pYx9T)=#<"
   CLOUDSQL_DSN: /cloudsql/myphpapp-456520:europe-west10:petapp

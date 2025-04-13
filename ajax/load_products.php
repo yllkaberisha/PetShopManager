@@ -1,6 +1,5 @@
 <?php
-
-include '../config.php';
+include dirname(__DIR__) . '/config.php';
 
 $sort_order = isset($_GET['sort_order']) ? $_GET['sort_order'] : 'az';
 $order_query = '';

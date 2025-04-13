@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+include dirname(__DIR__) . '/config.php';
 function logUserRegistration($name, $email)
 {
     $file = fopen("user_registrations.txt", "a"); // Hap skedarin për shkrim (mode "a" për të shtuar në fund të skedarit)

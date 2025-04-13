@@ -33,6 +33,7 @@ switch ($request) {
         require 'admin_orders.php';
         break;
 
+
     case '/admin_users':
     case '/admin_users.php':
         require 'admin_users.php';
@@ -84,7 +85,42 @@ switch ($request) {
         require 'checkout.php';
         break;
 
- 
+    case '/logout':
+            case '/logout.php':
+                require 'logout.php';
+                break;
+    
+
+     case '/ajax/load_products':
+                    case '/ajax/load_products.php':
+                        require 'ajax/load_products.php';
+                        break;
+     
+    case '/ajax/add_products':
+                    case '/ajax/add_products.php':
+                        require 'ajax/add_products.php';
+                        break;
+
+    case '/ajax/delete_product':
+                    case '/ajax/delete_product.php':
+                  require 'ajax/delete_product.php';
+            break;
+
+    case '/ajax/get_product':
+        case '/ajax/get_product.php':
+            require 'ajax/get_product.php';
+            break;
+
+    case '/ajax/sort_products':
+        case '/ajax/sort_products.php':
+            require 'ajax/sort_products.php';
+            break;
+
+
+    case '/ajax/update_product':
+        case '/ajax/update_product.php':
+            require 'ajax/update_product.php';
+            break;
     default:
         http_response_code(404);
         echo "404 Not Found";

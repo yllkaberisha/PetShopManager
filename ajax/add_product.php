@@ -1,6 +1,6 @@
 <?php
 
-include '../config.php';
+include dirname(__DIR__) . '/config.php';
 
 $response = array('status' => 'error', 'message' => 'Unknown error occurred.');
 

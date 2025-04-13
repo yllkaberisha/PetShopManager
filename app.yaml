@@ -1,0 +1,22 @@
+runtime: php83
+
+runtime_config:
+  document_root: .
+
+handlers:
+  # Serve images and other static files
+  - url: /(.+\.(gif|png|jpg|css|js|map|PNG))$
+    static_files: \1
+    upload: .+\.(gif|png|jpg|css|js|map|PNG)$
+
+  # Serve all other URLs using PHP
+  - url: /.*
+    script: auto
+
+entrypoint: serve handler.php
+
+env_variables:
+  CLOUDSQL_USER: root
+  CLOUDSQL_DB: shop_db
+  CLOUDSQL_PASSWORD: "[p~pEx0pYx9T)=#<""
+  CLOUDSQL_DSN: /cloudsql/myphpapp-456520:europe-west10:petapp
